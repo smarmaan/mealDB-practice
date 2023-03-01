@@ -1,9 +1,12 @@
-const loadMeals = (searchText) => {
+const loadMeals = async (searchText) => {
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
-
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displayMeals(data.meals));
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    displayMeals(data.meals);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const displayMeals = (meals) => {
@@ -74,15 +77,21 @@ const displayMeals = (meals) => {
   }
 };
 
-const loadMealsAll = () => {
+const loadMealsAll = async () => {
   const searchValue = document.getElementById("input-field").value;
   document.getElementById("input-field").value = "";
 
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`;
 
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displayMealsAll(data.meals));
+  try {
+    const res = await fetch(url);
+
+    const data = await res.json();
+
+    displayMealsAll(data.meals);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const displayMealsAll = (meals) => {
@@ -92,8 +101,6 @@ const displayMealsAll = (meals) => {
   for (let i = 6; i < meals.length; i++) {
     const meal = meals[i];
     console.log(meals);
-    //     // document.getElementById("show-btn").classList.add("disabled")
-    //     // console.log(meal);
 
     // foodContainer.innerHTML = "";
 
@@ -131,12 +138,18 @@ const searchMeals = () => {
   return searchValue;
 };
 
-const loadMealDetails = (idMeal) => {
+const loadMealDetails = async (idMeal) => {
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
 
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => displayMealDetails(data.meals[0]));
+  try {
+    const res = await fetch(url);
+
+    const data = await res.json();
+
+    displayMealDetails(data.meals[0]);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const displayMealDetails = (meal) => {

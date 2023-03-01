@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cucake">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal DB</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.2/dist/full.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+    <!-- onload="loadMeals('fish')" -->
+
+
+    <!--------------- NAVBAR SECTION ------------->
+
+    <section class="mx-16 mt-9 my-10 drop-shadow-xl">
+
+
+        <div class="navbar bg-stone-200 p-5 rounded-box">
+            <div class="navbar-start">
+
+                <a class="btn btn-ghost normal-case text-xl">Tasty HUT</a>
+            </div>
+
+            <div class="navbar-end">
+                <a class="btn">Sign Up</a>
+            </div>
+        </div>
+
+
+
+    </section>
+
+    <!-- ==============================================================
+                         Banner section Start's here                                             
+             ============================================================== -->
+
+
+
+
+    <section class="mx-48 mt-9 my-10 drop-shadow-2xl">
+
+
+        <div class="hero drop-shadow-2xl" style="background-image: url(./images/banner_1.png);">
+            <div class="hero-overlay bg-opacity-60 "></div>
+            <div class="hero-content text-center text-neutral-content">
+                <div>
+                    <h1 class="mb-5 text-5xl font-bold mt-72 ">Taste Our Delicious Best Foods</h1>
+                    <p class="mb-5 text-2xl">There are many variations of passages of Lorem Ipsum available, but the
+                        majority
+                        have suffered alteration in some form, by injected humou.</p>
+                    <div class="form-control  flex flex-row justify-center items-center mb-72">
+
+                        <input id="input-field" type="text" placeholder=" Search any food 'Fish'" class="input input-bordered mx-3 w-3/5 p-5 py-9" />
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <button onclick="searchMeals()" id="search-btn" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </section>
+
+
+
+    <!-- ==============================================================
+                         Food section                                              
+        ============================================================== -->
+
+
+    <section class="mx-48 mt-9 my-10 ">
+
+
+        <h1 class="mb-5 text-5xl font-bold my-20 text-center ">Your Favorite Food</h1>
+
+
+
+        <div id="food-container" class="grid grid-cols-2 gap-20 bg-base-100 mt-20 ">
+
+
+
+
+
+<!-- 
+
+
+
+            
+             <div class="card card-side bg-white shadow-xl text-black text-xl 6-cards">
+                <figure><img class="w-[40rem] h-[20rem]" src="https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg" alt="Movie" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Chicken Handi</h2>
+                    <p>There are many variations of passages of available, but the majority have suffered.</p>
+                    <div class="card-actions justify-end">
+                        <button id="details-btn" class="btn btn-primary">View Details</button>
+                    </div>
+                </div>
+            </div> 
+
+
+
+
+             <div class="card card-side bg-white shadow-xl text-black text-xl 6-cards">
+                <figure><img class="w-[40rem] h-[20rem]" src="https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg" alt="Movie" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Chicken Handi</h2>
+                    <p>There are many variations of passages of available, but the majority have suffered.</p>
+                    <div class="card-actions justify-end">
+                        <button id="details-btn" class="btn btn-primary">View Details</button>
+                    </div>
+                </div>
+            </div> 
+
+
+
+
+             <div class="card card-side bg-white shadow-xl text-black text-xl 6-cards">
+                <figure><img class="w-[40rem] h-[20rem]" src="./images/banner_1.png" alt="Movie" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Chicken Handi</h2>
+                    <p>There are many variations of passages of available, but the majority have suffered.</p>
+                    <div class="card-actions justify-end">
+                        <button id="details-btn" class="btn btn-primary">View Details</button>
+                    </div>
+                </div>
+            </div> 
+
+
+
+             <div class="card card-side bg-white shadow-xl text-black text-xl 6-cards">
+                <figure><img class="w-[40rem] h-[20rem]" src="./images/banner_1.png" alt="Movie" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Chicken Handi</h2>
+                    <p>There are many variations of passages of available, but the majority have suffered.</p>
+                    <div class="card-actions justify-end">
+                        <button id="details-btn" class="btn btn-primary">View Details</button>
+                    </div>
+                </div>
+            </div> 
+
+
+
+             <div class="card card-side bg-white shadow-xl text-black text-xl 6-cards">
+                <figure><img class="w-[40rem] h-[20rem]" src="./images/banner_1.png" alt="Movie" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Chicken Handi</h2>
+                    <p>There are many variations of passages of available, but the majority have suffered.</p>
+                    <div class="card-actions justify-end">
+                        <button id="details-btn" class="btn btn-primary">View Details</button>
+                    </div>
+                </div>
+            </div> 
+
+
+
+             <div class="card card-side bg-white shadow-xl text-black text-xl 6-cards">
+                <figure><img class="w-[40rem] h-[20rem]" src="./images/banner_1.png" alt="Movie" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Chicken Handi</h2>
+                    <p>There are many variations of passages of available, but the majority have suffered.</p>
+                    <div class="card-actions justify-end">
+                        <button id="details-btn" class="btn btn-primary">View Details</button>
+                    </div>
+                </div>
+            </div> 
+
+
+ -->
+
+
+
+
+        </div>
+
+
+        <div class="text-center mt-9 my-10">
+
+
+            <button  id="show-btn" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg font-bold mx-auto drop-shadow-xl">Show All</button>
+
+        </div>
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+    <!-- ==============================================================
+                         footer section                                            
+        ============================================================== -->
+
+
+
+
+    <section class="mx-48 mt-9 my-10 drop-shadow-xl">
+
+
+        <footer class="footer p-10 bg-base-200 text-base-content rounded-xl text-xl">
+            <div>
+                <span class="footer-title">Services</span>
+                <a class="link link-hover">Branding</a>
+                <a class="link link-hover">Design</a>
+                <a class="link link-hover">Marketing</a>
+                <a class="link link-hover">Advertisement</a>
+            </div>
+            <div>
+                <span class="footer-title">Company</span>
+                <a class="link link-hover">About us</a>
+                <a class="link link-hover">Contact</a>
+                <a class="link link-hover">Jobs</a>
+                <a class="link link-hover">Press kit</a>
+            </div>
+            <div>
+                <span class="footer-title">Legal</span>
+                <a class="link link-hover">Terms of use</a>
+                <a class="link link-hover">Privacy policy</a>
+                <a class="link link-hover">Cookie policy</a>
+            </div>
+            <div>
+                <span class="footer-title">Newsletter</span>
+                <div class="form-control w-80">
+                    <label class="label">
+                        <span class="label-text">Enter your email address</span>
+                    </label>
+                    <div class="relative">
+                        <input type="text" placeholder="username@site.com" class="input input-bordered w-full pr-16" />
+                        <button class="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>

@@ -27,9 +27,10 @@ const displayMeals = (meals) => {
     <div class="card-body">
         <h2 class="card-title">${meal.strMeal}</h2>
         <p>There are many variations of passages of available, but the majority have suffered.</p>
-        <div class="card-actions justify-end">
-            <button id="details-btn" class="btn btn-primary">View Details</button>
-        </div>
+        <label for="mealDetailsModal" class=" btn btn-primary" onclick="loadMealDetails(${
+          meal.idMeal
+        })">Details</label>
+
     </div>
 </div>
     
@@ -56,9 +57,11 @@ const displayMeals = (meals) => {
       <div class="card-body">
           <h2 class="card-title">${meal.strMeal}</h2>
           <p>There are many variations of passages of available, but the majority have suffered.</p>
-          <div class="card-actions justify-end">
-              <button id="details-btn" class="btn btn-primary">View Details</button>
-          </div>
+          <label for="mealDetailsModal" class=" btn btn-primary" onclick="loadMealDetails(${
+            meal.idMeal
+          })">Details</label>
+
+         
       </div>
   </div>
       
@@ -105,9 +108,10 @@ const displayMealsAll = (meals) => {
        <div class="card-body">
            <h2 class="card-title">${meal.strMeal}</h2>
            <p>There are many variations of passages of available, but the majority have suffered.</p>
-           <div class="card-actions justify-end">
-               <button id="details-btn" class="btn btn-primary">View Details</button>
-           </div>
+           <label for="mealDetailsModal" class=" btn btn-primary" onclick="loadMealDetails(${
+             meal.idMeal
+           })">Details</label>
+
       </div>
    </div>
 
@@ -126,3 +130,34 @@ const searchMeals = () => {
   // loadMealsAll(searchValue);
   return searchValue;
 };
+
+const loadMealDetails = (idMeal) => {
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayMealDetails(data.meals[0]));
+};
+
+const displayMealDetails = (meal) => {
+  console.log(meal.strYoutube);
+  document.getElementById("mealDetailsTitle").innerText = meal.strMeal;
+  const mealDetailsBody = document.getElementById("mealDetailsBody");
+  mealDetailsBody.innerHTML = `
+  
+  
+  <figure><img class="w-[40rem] h-[20rem]" src="${
+    meal.strMealThumb ? meal.strMealThumb : ""
+  }" /></figure>
+
+
+  <p class="my-5 p-5">${meal.strInstructions ? meal.strInstructions : ""}</p>
+  <p class="my-5 p-5"> YouTube : <a href="${meal.strYoutube}">${
+    meal.strYoutube
+  }</a> </p>
+  
+  
+  `;
+};
+
+loadMeals("fish");

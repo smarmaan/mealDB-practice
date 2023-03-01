@@ -9,14 +9,15 @@ const loadMeals = (searchText) => {
 const displayMeals = (meals) => {
   const foodContainer = document.getElementById("food-container");
   foodContainer.innerText = "";
-  
-  for (let i = 0; i < 6 ; i++) {
-    const meal = meals[i];
 
-    // console.log(meal);
+  if (meals.length < 6) {
+    for (let i = 0; i < meals.length; i++) {
+      const meal = meals[i];
 
-    const foodDiv = document.createElement("div");
-    foodDiv.innerHTML = `
+      // console.log(meal);
+
+      const foodDiv = document.createElement("div");
+      foodDiv.innerHTML = `
 
     <div class="card card-side bg-white shadow-xl text-black text-xl ">
     <figure><img class="w-[40rem] h-[20rem]" src="${
@@ -35,8 +36,38 @@ const displayMeals = (meals) => {
 
     `;
 
-    foodContainer.appendChild(foodDiv);
-    document.getElementById("show-btn").classList.remove("hidden");
+      foodContainer.appendChild(foodDiv);
+      document.getElementById("show-btn").classList.remove("hidden");
+    }
+  } else {
+    for (let i = 0; i < 6; i++) {
+      const meal = meals[i];
+
+      // console.log(meal);
+
+      const foodDiv = document.createElement("div");
+      foodDiv.innerHTML = `
+  
+      <div class="card card-side bg-white shadow-xl text-black text-xl ">
+      <figure><img class="w-[40rem] h-[20rem]" src="${
+        meal.strMealThumb ? meal.strMealThumb : ""
+      }
+      " /></figure>
+      <div class="card-body">
+          <h2 class="card-title">${meal.strMeal}</h2>
+          <p>There are many variations of passages of available, but the majority have suffered.</p>
+          <div class="card-actions justify-end">
+              <button id="details-btn" class="btn btn-primary">View Details</button>
+          </div>
+      </div>
+  </div>
+      
+  
+      `;
+
+      foodContainer.appendChild(foodDiv);
+      document.getElementById("show-btn").classList.remove("hidden");
+    }
   }
 };
 
